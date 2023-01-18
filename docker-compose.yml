@@ -1,0 +1,9 @@
+version: '3'
+services:
+  cp-demo-fe:
+    container_name: cp-demo-fe
+    image: cp-demo-fe:latest
+    volumes:
+      - ./external-application.yml:/application.yml
+    ports:
+      - 8080:8080

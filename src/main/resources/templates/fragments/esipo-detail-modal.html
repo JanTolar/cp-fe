@@ -1,0 +1,57 @@
+<div id="showESipoDetailDiv">
+	<!-- Modal -->
+	<div class="modal fade" id="eSipoDetaiModal" role="dialog">
+		<div class="modal-dialog modal-lg">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<span th:if="${type == 'RULE'}">
+						<h4 th:text="'Detail předpisu pro plátce : ' + ${platceId} + ' pro období ' + ${period} + ', symbol: ' + ${symbol}" class="modal-title" />
+					</span>
+					<span th:if="${type == 'PAYMENT'}">
+						<h4 th:text="'Detail plateb pro plátce : ' + ${platceId} + ' pro období ' + ${period} + ', symbol: ' + ${symbol}" class="modal-title" />
+					</span>
+
+				</div>
+				<div class="modal-body">
+					<span th:if="${type == 'RULE'}">
+						<table class="custom-table">
+							<tr>
+								<th>Kód poplatku</th>
+								<th>Předpis platby</th>
+								<th>Symbol</th>
+							</tr>
+							<tr th:each="detailEntry : ${detailList}" th:with="detail = ${detailEntry}">
+								<td th:text="${detail.feeCode}" />
+								<td th:text="${#numbers.formatCurrency(detail.rule)}" />
+								<td th:text="${detail.symbol}" />
+							</tr>
+						</table>
+					</span>
+
+					<span th:if="${type == 'PAYMENT'}">
+						<table class="custom-table">
+							<tr>
+								<th>Kód poplatku</th>
+								<th>Částka</th>
+								<th>Symbol</th>
+							</tr>
+							<tr th:each="detailEntry : ${detailList}" th:with="detail = ${detailEntry}">
+								<td th:text="${detail.feeCode}" />
+								<td th:text="${#numbers.formatCurrency(detail.payment)}" />
+								<td th:text="${detail.symbol}" />
+							</tr>
+						</table>
+					</span>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Zavřít</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

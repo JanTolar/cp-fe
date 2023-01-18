@@ -1,0 +1,63 @@
+<br />
+<table width="100%" class="custom-table-no-stripped">
+	<tr>
+		<th colspan="3">Detail plátce</th>
+	</tr>
+	<tr width="33%">
+		<td><b>Jméno:</b> <span th:text="${platceDetail.firstName}"></span></td>
+		<td><b>Datum narození:</b> <span th:text="${platceDetail.birthDate}"></span>
+		<td><b>Telefon:</b> <span th:text="${platceDetail.phone}"></span>
+	</tr>
+	<tr width="34%">
+		<td><b>Příjmení:</b> <span th:text="${platceDetail.surname}"></span>
+		<td><b>Místo narození:</b> <span th:text="${platceDetail.birthPlace}"></span>
+		<td><b>E-mail:</b> <span th:text="${platceDetail.email}"></span>
+	</tr>
+	<tr width="33%">
+		<td><b>Četnost výpisu:</b> <span th:text="${platceDetail.reportFrequency}"></span>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+<br />
+<table width="100%" class="custom-table">
+	<tr>
+		<th colspan="4">Předpis za období - přehled</th>
+	</tr>
+	<tr>
+		<th>Kód poplatku</th>
+		<th>Předpis platby</th>
+		<th>Symbol</th>
+		<th></th>
+	</tr>
+	<tr th:each="ruleSummary : ${ruleSummaryList}" th:with="rule = ${ruleSummary}">
+		<td th:text="${rule.feeCode}" />
+		<td th:text="${#numbers.formatCurrency(rule.rule)}" />
+		<td th:text="${rule.symbol}" />
+		<td><a href="#" th:onclick="loadPeriodDetail([[${platceId}]],[[${period}]],[[${rule.symbol}]],'RULE')">Zobraz detail</a></td>
+	</tr>
+</table>
+<br />
+<table width="100%" class="custom-table">
+	<tr>
+		<th colspan="7">Platby za období - přehled</th>
+	</tr>
+	<tr>
+		<th>Částka</th>
+		<th>Datum podání</th>
+		<th>Datum zpracování</th>
+		<th>Podací pošta</th>
+		<th>PSČ</th>
+		<th>Symbol</th>
+		<th></th>
+	</tr>
+	<tr th:each="paymentSummary : ${paymentSummaryList}" th:with="payment = ${paymentSummary}">
+		<td th:text="${#numbers.formatCurrency(payment.payment)}" />
+		<td th:text="${payment.deliveryDate}" />
+		<td th:text="${payment.processDate}" />
+		<td th:text="${payment.deliveryPost}" />
+		<td th:text="${payment.psc}" />
+		<td th:text="${payment.symbol}" />
+		<td><a href="#" th:onclick="loadPeriodDetail([[${platceId}]],[[${period}]],[[${payment.symbol}]],'PAYMENT')">Zobraz detail</a></td>
+	</tr>
+</table>

@@ -1,0 +1,29 @@
+<br />
+<table width="100%" class="custom-table">
+	<tr>
+		<th colspan="8">Detail přijatých částek</th>
+	</tr>
+	<tr>
+		<th>PSČ pošty</th>
+		<th>Client ID</th>
+		<th>ID zásilky</th>
+		<th>PSČ cíle</th>
+		<th>Částka</th>
+		<th>Typ vyúčtování</th>
+		<th>Report zpracován dne</th>
+		<th>Report updatováno dne</th>
+	</tr>
+	<tr th:each="reportDetail : ${reportDetailsList}" th:with="report = ${reportDetail}">
+		<td th:text="${report.postPsc}" />
+		<td th:text="${report.idClient}" />
+		<td th:text="${report.idZasilka}" />
+		<td th:text="${report.targetPsc}" />
+		<td th:text="${#numbers.formatCurrency(report.amount)}" />
+		<td th:text="${report.chargeType}" />
+		<td th:text="${report.reportCreated}" />
+		<td th:text="${report.lastUpdate}" />
+	</tr>
+	<tr>
+		<th colspan="8">Celkem přijato: <span th:text="${#numbers.formatCurrency(amountSum)}" /></th>
+	</tr>
+</table>

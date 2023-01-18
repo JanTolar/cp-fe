@@ -1,0 +1,26 @@
+<!doctype html>
+
+	<div class="div-header">
+	
+		</br>
+		<!-- Company name shown on mobile -->
+		<img th:src="@{/images/logo.png}"/>
+	
+	</div>
+	<div class="div-header">
+		<!-- Main navigation items -->
+		<div>
+			<ul>
+				<li>
+					<a th:class="${page eq 'balikovna-reporty'} ? 'active' : ''" th:href="@{/balikovna-reporty}" th:text="#{menu.balikovna-reporty}" />
+				</li>
+				<li>
+					<a th:class="${page eq 'balikovna-zakaznik'} ? 'active' : ''" th:href="@{/balikovna-zakaznik}" th:text="#{menu.balikovna-zakaznik}" />
+				</li>
+				<li>
+					<a th:class="${page eq 'esipo'} ? 'active' : ''" th:href="@{/esipo}" th:text="#{menu.esipo}" />
+				</li>
+			</ul>
+		</div>
+	</div>
+
