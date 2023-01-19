@@ -1,0 +1,12 @@
+<table class="custom-table">
+	<tr>
+		<th>ID Zásilky</th>
+		<th>Datum a čas podání</th>
+		<th></th>
+	</tr>
+	<tr th:each="zasilkaEntry : ${zasilkaHistoryList}" th:with="zasilka = ${zasilkaEntry}">
+		<td th:text="${zasilka.idZasilka}" />
+		<td th:text="${zasilka.datStav}" />
+		<td><a href="#" th:onclick="loadZasilkaDetail([[${zasilka.idZasilka}]])">Detail zásilky</a></td>
+	</tr>
+</table>
