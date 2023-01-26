@@ -2,7 +2,7 @@ server:
   port: 8080
 spring:
   application:
-    name: cp-demo-fe
+    name: balikovna-api
   datasource:
     platform: postgres
 #    url: jdbc:postgresql://host.docker.internal:5432/ceska_posta?currentSchema=digi_hub
@@ -27,11 +27,6 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
-  thymeleaf:
-    cache: false
-    enabled: true
-    prefix: classpath:/templates/
-    suffix: .html
 app:
   db:
     names:
